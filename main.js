@@ -6,7 +6,6 @@ const FULL_HEART = '♥'
 const domLoaded = () => {
   document.addEventListener('DOMContentLoaded', 
   () => { 
-    hideError()
     likeHandler()})
 }
 
@@ -30,27 +29,17 @@ function likeHandler() {
           else {
             heart.className = 'like-glyph'
           }
-        } else {
-          res => {
-            showError()
-          }
-          }
-        }
-      )
+        }}).catch(error => {
+          console.log(error)
+          const modal = document.querySelector('#modal')
+          modal.className=''
+          console.log(modal.className)
+          modal.textContent = `${error}`
+          setTimeout(()=>
+          modal.className='hidden',3000)
+        })
     })
   }}
-
-  const hideError = () => {
-      const modal = document.querySelector('#modal')
-      modal.className = 'hidden'
-  }
-
-  const showError = () => {
-    const modal = document.querySelector('#modal')
-    console.log(modal.className)
-    modal.className=''
-    console.log(modal.className)
-}
 
 domLoaded()
 
