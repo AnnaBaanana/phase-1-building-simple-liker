@@ -24,9 +24,11 @@ function likeHandler() {
         console.log(res)
         if (res === 'Pretend remote server notified of action!') {
           if (heart.className === 'like-glyph') {
+            heart.textContent= FULL_HEART
             heart.className = 'activated-heart'
           }
           else {
+            heart.textContent = EMPTY_HEART
             heart.className = 'like-glyph'
           }
         }}).catch(error => {
@@ -42,8 +44,6 @@ function likeHandler() {
   }}
 
 domLoaded()
-
-
 
 //------------------------------------------------------------------------------
 // Don't change the code below: this function mocks the server response
